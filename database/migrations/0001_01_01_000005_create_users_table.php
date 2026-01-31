@@ -13,12 +13,29 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable();
             $table->string('name');
+            $table->string('gender')->default('male');
+            $table->string('citizen_number')->unique();
+            $table->date('date');
+            $table->text('old_address')->nullable();
+            $table->text('new_address')->nullable();
             $table->string('email')->unique();
+            $table->string('phone')->nullable()->unique();
+            $table->foreignIdFor(\App\Models\Rank::class)->constrained();
+            $table->foreignIdFor(\App\Models\Position::class)->constrained();
+            $table->foreignIdFor(\App\Models\Unit::class)->constrained();
+            $table->date('joined_date')->nullable();
+            $table->date('unit_assigned_date')->nullable();
+            $table->date('party_joined_date')->nullable();
+            $table->integer('status')->default(1);
+
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
