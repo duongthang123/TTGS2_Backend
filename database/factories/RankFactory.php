@@ -17,7 +17,8 @@ class RankFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'code' => fake()->unique()->regexify('[A-Z]{5}'),
+            'name' => fake()->name()
         ];
     }
 }

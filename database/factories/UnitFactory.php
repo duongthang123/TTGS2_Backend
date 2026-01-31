@@ -17,7 +17,9 @@ class UnitFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'code' => fake()->unique()->regexify('[A-Z]{5}'),
+            'name' => fake()->name(),
+            'leader_id' => null,
         ];
     }
 }
