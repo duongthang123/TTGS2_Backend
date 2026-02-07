@@ -8,7 +8,6 @@ use App\Http\Requests\Position\UpdatePositionRequest;
 use App\Http\Resources\Position\PositionCollection;
 use App\Http\Resources\Position\PositionResource;
 use App\Services\Position\PositionService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PositionController extends Controller
