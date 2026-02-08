@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Rank;
+namespace App\Http\Requests\Unit;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRankRequest extends FormRequest
+class CreateUnitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,19 +22,18 @@ class UpdateRankRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'exists:ranks,id',
-            'code' => 'required|unique:ranks,code,' . $this->rank,
-            'name' => 'required'
+            'code' => 'required|unique:units,code',
+            'name' => 'required',
+            'leader_id' => 'integer'
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'id.exists' => 'Cấp bậc không tồn tại',
-            'code.required' => 'Hãy nhập mã cấp bậc',
-            'code.unique' => 'Mã cấp bậc đã tồn tại',
-            'name.required' => 'Hãy nhập tên cấp bậc'
+            'code.required' => 'Hãy nhập mã bộ phận',
+            'code.unique' => 'Mã bộ phận đã tồn tại',
+            'name.required' => 'Hãy nhập tên bộ phận',
         ];
     }
 }
