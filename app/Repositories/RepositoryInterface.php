@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 interface RepositoryInterface
 {
-    public function getAll();
+    public function getAll($limit);
 
     public function findById($id);
 

@@ -14,7 +14,7 @@ class SalaryCft extends Model
     protected $fillable = [
         'user_id',
         'rank_id',
-        'salary_cft',
+        'salary',
         'from_year',
         'to_year',
         'note',

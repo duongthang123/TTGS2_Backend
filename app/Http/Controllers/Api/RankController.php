@@ -23,9 +23,9 @@ class RankController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ranks = $this->rankService->getAll();
+        $ranks = $this->rankService->getAll($request->all());
 
         return (new RankCollection($ranks))->additional([
             'message' => 'get all ranks success',

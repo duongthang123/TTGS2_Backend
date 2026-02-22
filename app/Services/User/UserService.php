@@ -14,9 +14,11 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->userRepository->getAll();
+        $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
+
+        return $this->userRepository->getAll($perPage);
     }
 
     public function getUserById($id)
