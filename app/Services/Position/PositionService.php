@@ -13,9 +13,11 @@ class PositionService
         $this->positionRepository = $positionRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->positionRepository->getAll();
+        $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
+
+        return $this->positionRepository->getAll($perPage);
     }
 
     public function createPosition($data)

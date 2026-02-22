@@ -13,9 +13,11 @@ class RankService
         $this->rankRepository = $rankRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->rankRepository->getAll();
+        $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
+
+        return $this->rankRepository->getAll($perPage);
     }
 
     public function createRank($data)

@@ -23,9 +23,9 @@ class UnitController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $units = $this->unitService->getAll();
+        $units = $this->unitService->getAll($request->all());
 
         return (new UnitCollection($units))->additional([
             'message' => 'get all unit success',

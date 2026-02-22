@@ -18,7 +18,7 @@ abstract class BaseRepository implements RepositoryInterface
         $this->model = app()->make($this->getModel());
     }
 
-    public function getAll($limit = 10)
+    public function getAll($limit)
     {
         return $this->model::latest('id')->paginate($limit);
     }

@@ -8,6 +8,7 @@ use App\Http\Requests\Position\UpdatePositionRequest;
 use App\Http\Resources\Position\PositionCollection;
 use App\Http\Resources\Position\PositionResource;
 use App\Services\Position\PositionService;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PositionController extends Controller
@@ -22,9 +23,9 @@ class PositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $positions = $this->positonService->getAll();
+        $positions = $this->positonService->getAll($request->all());
 
         return (new PositionCollection($positions))->additional([
             'message' => 'get positions list success',
