@@ -19,8 +19,10 @@ class AuthController extends Controller
     {
         if(!Auth::attempt($request->only('citizen_number', 'password'))) {
             return response()->json([
-                'message' => 'Invalid credentials',
-                'status' => Response::HTTP_UNAUTHORIZED,
+                'errors' => [
+                    'message' => 'Tài khoản hoặc mật khẩu không chính xác',
+                    'status' => Response::HTTP_UNAUTHORIZED,
+                ]
             ], 401);
         }
 
@@ -29,13 +31,15 @@ class AuthController extends Controller
         $token = $user->createToken('token')->plainTextToken;
 
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'citizen_number' => $user->citizen_number,
-                'roles' => $user->getRoleNames()
+            'data' => [
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'citizen_number' => $user->citizen_number,
+                    'roles' => $user->getRoleNames()
+                ]
             ]
         ], Response::HTTP_OK);
     }

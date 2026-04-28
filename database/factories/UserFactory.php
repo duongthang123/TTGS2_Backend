@@ -29,7 +29,7 @@ class UserFactory extends Factory
         return [
             'code' => strtoupper(Str::random(5)),
             'name' => fake()->name(),
-            'gender' => fake()->randomElement(['male', 'female']),
+            'gender' => fake()->randomElement([0, 1]),
             'citizen_number' => fake()->unique()->numerify('############'),
             'date' => fake()->dateTimeBetween('-45 years', '-22 years')->format('Y-m-d'),
             'old_address' => fake()->address(),

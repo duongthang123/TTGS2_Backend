@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use function Laravel\Prompts\error;
 
 class AuthRequest extends FormRequest
 {
@@ -38,5 +41,16 @@ class AuthRequest extends FormRequest
             'citizen_number.required' => 'Hãy nhập mã định danh',
             'password.required' => 'Hãy nhập mật khẩu',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => 422,
+                'message' => $validator->errors()->first(),
+                'errors' => $validator->errors(),
+            ], 422)
+        );
     }
 }

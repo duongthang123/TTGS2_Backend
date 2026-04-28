@@ -16,7 +16,7 @@ class UserService
 
     public function getAll($request)
     {
-        $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
+        $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.7');
 
         return $this->userRepository->getAll($perPage);
     }
