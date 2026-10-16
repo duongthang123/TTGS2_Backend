@@ -51,8 +51,14 @@ class AuthController extends Controller
      */
     public function me(Request $request)
     {
+        $user = $request->user();
         return response()->json([
-            'user' => $request->user()
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'roles' => $user->roles->pluck('name', 'id'),
+                'permissions' => $user->getAllPermissions()->pluck('name', 'id'),
+            ]
         ]);
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PositionController;
 use App\Http\Controllers\Api\RankController;
 use App\Http\Controllers\Api\UnitController;
@@ -15,6 +16,7 @@ Route::middleware('auth:sanctum')->get('/me', [AuthController::class, 'me'])->na
 
 //Role
 Route::middleware('auth:sanctum')->apiResource('roles', RoleController::class);
+Route::middleware('auth:sanctum')->apiResource('permissions', PermissionController::class);
 Route::middleware('auth:sanctum')->apiResource('positions', PositionController::class);
 Route::middleware('auth:sanctum')->apiResource('ranks', RankController::class);
 Route::middleware('auth:sanctum')->apiResource('units', UnitController::class);

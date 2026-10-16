@@ -19,4 +19,9 @@ class SalaryCft extends Model
         'to_year',
         'note',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
