@@ -39,7 +39,7 @@ class CreateRoleRequest extends FormRequest
         return [
             'name.required' => 'Hãy nhập tên vai trò!',
             'display_name.required' => 'Hãy nhập tên hiển thị vai trò!',
-            'group.required' => 'Hãy nhập tên nhóm vai trò!',
+            'group.required' => 'Hãy chọn nhóm vai trò!',
             'permission_ids.*.distinct' => 'Quyền đã bị trùng',
             'permission_ids.*.exists' => 'Quyền không tồn tại'
         ];

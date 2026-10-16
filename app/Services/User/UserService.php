@@ -17,8 +17,11 @@ class UserService
     public function getAll($request)
     {
         $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.7');
+        $search = trim($request['search'] ?? '');
+        $unitFilter = trim($request['unit_id'] ?? null);
+        $role = trim($request['role'] ?? '') ?: null;
 
-        return $this->userRepository->getAll($perPage);
+        return $this->userRepository->getAll($perPage, $search, $role, $unitFilter);
     }
 
     public function getUserById($id)

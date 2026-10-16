@@ -68,4 +68,17 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    public function salaryCft()
+    {
+        return $this->hasMany(SalaryCft::class);
+    }
+
+    public function latestSalaryCft()
+    {
+        return $this->hasOne(SalaryCft::class)->ofMany([
+            'to_year' => 'max',
+            'id' => 'max',
+        ]);
+    }
 }

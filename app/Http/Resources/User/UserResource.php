@@ -32,8 +32,14 @@ class UserResource extends JsonResource
             'unit_assigned_date' => $this->unit_assigned_date,
             'party_joined_date' => $this->party_joined_date,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'roles_id' => $this->roles->pluck('id'),
+            'salary_cft' => $this->latestSalaryCft ? [
+                'salary' => $this->latestSalaryCft->salary,
+                'from_year' => $this->latestSalaryCft->from_year,
+                'to_year' => $this->latestSalaryCft->to_year,
+                ] : null,
+            'created_at' => $this->created_at?->format('d/m/Y - H:i:s'),
+            'updated_at' => $this->updated_at?->format('d/m/Y - H:i:s'),
         ];
     }
 }

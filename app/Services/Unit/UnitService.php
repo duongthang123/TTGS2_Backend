@@ -17,7 +17,7 @@ class UnitService
     {
         $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
 
-        return $this->unitRepository->getAll($perPage);
+        return $this->unitRepository->getALlUnits($perPage);
     }
 
     public function createUnit($data)

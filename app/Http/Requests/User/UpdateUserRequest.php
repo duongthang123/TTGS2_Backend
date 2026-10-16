@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'id' => 'exists:users,id',
-            'code' => 'unique:users,code,' . $this->user,
+            'code' => 'nullable|unique:users,code,' . $this->user,
             'name' => 'required',
             'gender' => 'required|in:0,1',
             'citizen_number' => 'required|unique:users,citizen_number,' . $this->user,

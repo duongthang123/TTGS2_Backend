@@ -16,4 +16,9 @@ class Unit extends Model
         'name',
         'leader_id',
     ];
+
+    public function leader()
+    {
+        return $this->belongsTo(User::class, 'leader_id');
+    }
 }

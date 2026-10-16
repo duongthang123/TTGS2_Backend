@@ -21,16 +21,18 @@ class SalaryCftService
     public function getAll($request)
     {
         $perPage = isset($request['per_page']) ? $request['per_page'] : config('const.PER_PAGE.10');
+        $userId = $request['user_id'] ?? null;
+        $search = trim($request['search'] ?? '');
 
-        return $this->salaryCftRepository->getAll($perPage);
+        return $this->salaryCftRepository->getAllSalaryCftWithDataLatest($perPage, $userId, $search);
     }
 
     public function createSalaryCft($data)
     {
         $salaryCftExists = SalaryCft::query()
                             ->where('user_id', $data['user_id'])
-                            ->where('from_year', '<=', $data['to_year'])
-                            ->where('to_year' , '>=', $data['from_year'])
+                            ->where('from_year', '<', $data['to_year'])
+                            ->where('to_year' , '>', $data['from_year'])
                             ->exists();
         if ($salaryCftExists) {
             throw new \Exception('Khoảng năm bị trùng.');
@@ -49,8 +51,8 @@ class SalaryCftService
     {
         $salaryCftExists = SalaryCft::query()
             ->where('user_id', $data['user_id'])
-            ->where('from_year', '<=', $data['to_year'])
-            ->where('to_year' , '>=', $data['from_year'])
+            ->where('from_year', '<', $data['to_year'])
+            ->where('to_year' , '>', $data['from_year'])
             ->where('id' , '!=', $id)
             ->exists();
         if ($salaryCftExists) {

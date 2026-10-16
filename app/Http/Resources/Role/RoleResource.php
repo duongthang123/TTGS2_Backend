@@ -19,8 +19,8 @@ class RoleResource extends JsonResource
             'name' => $this->name,
             'display_name' => $this->display_name,
             'group' => $this->group,
-            'created_at' => $this->created_at,
-            'updated_at' =>$this->updated_at,
+            'created_at' => $this->created_at?->format('d/m/Y - H:i:s'),
+            'updated_at' => $this->updated_at?->format('d/m/Y - H:i:s'),
             'permissions' => $this->permissions->map->only(['id', 'name']),
         ];
     }

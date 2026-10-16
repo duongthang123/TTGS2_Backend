@@ -19,4 +19,9 @@ class UnitRepository extends BaseRepository
     {
         return Unit::class;
     }
+
+    public function getALlUnits($limit)
+    {
+        return $this->unit::with('leader')->latest('id')->paginate($limit);
+    }
 }
