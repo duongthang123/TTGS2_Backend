@@ -57,6 +57,11 @@ class RoleDatabaseSeeder extends Seeder
             ['name' => 'update-salary-cfts', 'display_name' => 'Update SalaryCft', 'group' => 'SalaryCft'],
             ['name' => 'show-salary-cfts', 'display_name' => 'Show SalaryCft', 'group' => 'SalaryCft'],
             ['name' => 'delete-salary-cfts', 'display_name' => 'Delete SalaryCft', 'group' => 'SalaryCft'],
+
+            ['name' => 'create-prisoner', 'display_name' => 'Create Prisoner', 'group' => 'Prisoner'],
+            ['name' => 'update-prisoner', 'display_name' => 'Update Prisoner', 'group' => 'Prisoner'],
+            ['name' => 'show-prisoner', 'display_name' => 'Show Prisoner', 'group' => 'Prisoner'],
+            ['name' => 'delete-prisoner', 'display_name' => 'Delete Prisoner', 'group' => 'Prisoner'],
         ];
 
         foreach ($permissions as $permission) {
