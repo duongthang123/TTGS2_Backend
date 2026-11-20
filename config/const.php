@@ -24,5 +24,11 @@ return [
         'TRANSFERRED' => 4,  /**  điều chuyển công tác */
         'ARCHIVED' => 5,  /** lưu trữ  */
     ],
+    'PRISONER_STATUS' => [
+        'IN_CUSTODY' => 1, // Đang ở trại
+        'TRANSFERRED_TO_ANOTHER_FACILITY' => 2, // Chuyển trại
+        'REASSIGNED' => 3, // Điều chuyển
+        'RELEASED' => 4, // Ra trại
+    ],
     'PASSWORD_DEFAULT' => '12345678',
 ];

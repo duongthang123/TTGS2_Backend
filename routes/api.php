@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PositionController;
+use App\Http\Controllers\Api\PrisonerController;
 use App\Http\Controllers\Api\RankController;
 use App\Http\Controllers\Api\UnitController;
 use App\Http\Controllers\Api\UserController;
@@ -22,3 +23,6 @@ Route::middleware('auth:sanctum')->apiResource('ranks', RankController::class);
 Route::middleware('auth:sanctum')->apiResource('units', UnitController::class);
 Route::middleware('auth:sanctum')->apiResource('users', UserController::class);
 Route::middleware('auth:sanctum')->apiResource('salary-cfts', SalaryCftController::class);
+
+// prisoners
+Route::middleware('auth:sanctum')->apiResource('prisoners', PrisonerController::class);
